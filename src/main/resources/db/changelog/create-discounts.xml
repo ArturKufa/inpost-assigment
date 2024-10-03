@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro
+        http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+    <changeSet id="2" author="artur">
+        <createTable tableName="discount">
+            <column name="ID" type="number(20)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="DISCOUNT_TYPE" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DISCOUNT_VALUE" type="float">
+                <constraints nullable="false"/>
+            </column>
+            <column name="AMOUNT" type="number(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="artur">
+        <createIndex indexName="discount_discount_type_idx" tableName="discount">
+            <column name="DISCOUNT_TYPE"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="3.5" author="artur">
+        <createSequence
+                sequenceName="DISCOUNT_SEQ"
+                cycle="true"
+                dataType="int"
+                incrementBy="1"
+                maxValue="1000"
+                minValue="1"
+                ordered="true"
+                schemaName="public"
+                startValue="1"/>
+    </changeSet>
+</databaseChangeLog>

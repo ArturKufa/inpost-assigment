@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - include:
+      file: create-discounts.xml
+      relativeToChangelogFile: true
+  - include:
+      file: create-products.xml
+      relativeToChangelogFile: true
+  - include:
+      file: example-data.sql
+      relativeToChangelogFile: true
