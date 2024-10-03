@@ -105,4 +105,20 @@ public class ProductIT extends DiscountSpyMockAccesser {
                 .isEqualTo(secondResponse);
         validateDiscountJpaRepositoryCalledOnce(DiscountType.PERCENTAGE_BASED);
     }
+
+    @Test
+    @DirtiesContext
+    @Sql(value = "classpath:delete-all-products.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+    void shouldReturnBusinessExceptionWhenProductIsNotFound() {
+        String response = given()
+                .accept("text/plain;charset=UTF-8")
+                .get("http://localhost:" + port + "/v1/product/bc631743-d409-4333-bdaf-d92a5c683f4a/discount")
+                .then()
+                .statusCode(400)
+                .extract()
+                .body()
+                .asString();
+
+        assertThat(response).isEqualTo("Business exception occurred: Can't find Product for given ID: bc631743-d409-4333-bdaf-d92a5c683f4a");
+    }
 }

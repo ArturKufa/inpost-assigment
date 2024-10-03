@@ -5,7 +5,7 @@ This is a proposed solution for Java Assigment 1 task.
 ## Business assumptions
 1. There are two global discount policies: percentage-based, amount-based. I assumed that there will be no scenario when two distinct percentage/amount-based policies are necessary in the same time.
 2. Every product can have only one discount policy
-3. Endpoint for calculating product price should give an array of possible discount, or specific discount based on given amount. This gives as a possiblity to show discount like below:
+3. Endpoint for calculating product price should give an array of possible discount, or specific discount based on given amount. This gives us a possiblity to show discount like below:
 ![img.png](img.png)
 4. Product endpoint is customer facing. It's accessible for everyone
 5. Discount endpoints can be accessed only from some kind of admin-panel
